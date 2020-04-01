@@ -34,12 +34,6 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/*!!!!!!!!!!!!!!!!!!!!!
-LABORATOR 5 :
-in onCreate setez tema in functie de optiunea dark_mode din preferences
-in celelalte metode de lifecycle forteez recrearea cand tema curenta nu corespunde cu cea setata in preferences
-am adaugat un buton pentru adaugarea la cos a unui produs care savleaza produsul pe disk
-*/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this,CartActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.sensors:
+                intent = new Intent(this,SensorInfoActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.location:
+                intent = new Intent(this,LocationActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -83,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
                         currPosition = -1;
                     }
                 })
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!
-##########################
-LABORATOR 5 :
-Salvez pe disk produsul adaugat la cosul de cumparaturi*/
                 .setPositiveButton("add to cart", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -103,7 +101,6 @@ Salvez pe disk produsul adaugat la cosul de cumparaturi*/
                         Toast.makeText(ctx,"Game added successfully!",Toast.LENGTH_SHORT).show();
                     }
                 })
-/*########################*/
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -118,11 +115,6 @@ Salvez pe disk produsul adaugat la cosul de cumparaturi*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!
-############################
-LABORATOR 5
-setez tema in functie de setarea din preferences*/
-
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
         boolean dark = sharedPreferences.getBoolean("dark_mode", false);
@@ -132,8 +124,6 @@ setez tema in functie de setarea din preferences*/
         }else{
             setTheme(R.style.Theme_AppCompat_DayNight);
         }
-
-/*######################*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -199,19 +189,12 @@ setez tema in functie de setarea din preferences*/
     @Override
     protected void onStart() {
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!
-###########################
-LABORATOR 5
-fortez recrearea pentru a avea noua tema cand e necesar*/
-
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this /* Activity context */);
         boolean dark = sharedPreferences.getBoolean("dark_mode", false);
 
         if(this.dark!=dark)
             recreate();
-
-/*#########################*/
 
         super.onStart();
         Log.d("EGames","onStart");
@@ -220,19 +203,12 @@ fortez recrearea pentru a avea noua tema cand e necesar*/
     @Override
     protected void onRestart() {
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!
-###########################
-LABORATOR 5
-fortez recrearea pentru a avea noua tema cand e necesar*/
-
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this /* Activity context */);
         boolean dark = sharedPreferences.getBoolean("dark_mode", false);
 
         if(this.dark!=dark)
             recreate();
-
-/*########################*/
 
         super.onRestart();
         Log.d("EGames","onRestart");
@@ -241,11 +217,6 @@ fortez recrearea pentru a avea noua tema cand e necesar*/
     @Override
     protected void onResume() {
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!
-###########################
-LABORATOR 5
-fortez recrearea pentru a avea noua tema cand e necesar*/
-
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this /* Activity context */);
         boolean dark = sharedPreferences.getBoolean("dark_mode", false);
@@ -253,8 +224,6 @@ fortez recrearea pentru a avea noua tema cand e necesar*/
 
         if(this.dark!=dark)
             recreate();
-
-/*#######################*/
 
         super.onResume();
         Log.d("EGames","onResume");

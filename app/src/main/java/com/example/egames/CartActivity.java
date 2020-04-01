@@ -18,12 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!
-#########################
-LABORATOR 5 :
-Activitate pentru listarea cosului de cumparaturi de pe disc
-metodele de lyfecyle asigura ca tema sa fie cea setata de utilizator in preferences*/
-
 public class CartActivity extends AppCompatActivity {
 
     public boolean dark;
@@ -107,4 +101,3 @@ public class CartActivity extends AppCompatActivity {
         super.onResume();
     }
 }
-/*##########################*/

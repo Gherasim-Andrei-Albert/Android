@@ -11,17 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-/*
-!!!!!!!!!!!!!!!!!!!!!!!!
-########################
-LABORATOR 5 :
-PreferenceActivity care are un switch pentru dark mode
-layoutul pentru preferences se gaseste re/xml/preferences.xml
-metodele de lyfecycle asigura setare temei corespunzatoare cu preferences
-un listener asigura schimbarea temei imediat ce switchul dark_mode e schimbata de utilizator
-*/
-
-
 public class PreferencesActivity extends AppCompatActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -63,5 +52,3 @@ public class PreferencesActivity extends AppCompatActivity implements
         }
     }
 }
-
-/*############################*/
